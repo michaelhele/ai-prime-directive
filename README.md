@@ -1,4 +1,4 @@
-# Prime Directive Framework
+# AI Prime Directive Framework
 
 A centralised routing system for AI coding agents, so project rules are written once and read by every tool.
 

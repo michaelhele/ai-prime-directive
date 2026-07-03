@@ -6,7 +6,7 @@ A centralised routing system for AI coding agents, so project rules are written 
 
 * **AGENTS.md** — the single source of truth for all AI instructions and repository rules. This is the open, cross-tool standard originally published by OpenAI and now stewarded by the Agentic AI Foundation. It is read natively by Cursor, Codex, Gemini CLI, GitHub Copilot, Google Jules, Windsurf, Roo Code and others.
 * **BUILD_LOG.md** — a plain-English chronological diary of design decisions, file creations and project milestones. Prevents "cold start" when a new agent or human joins the project.
-* **_skills/** — a storage location for modular workflows and specialised agent prompts.
+* **.agents/skills/** — a storage location for modular workflows and specialised agent prompts. .agents/skills/ holds reusable agent skills shared across tools.
 
 ## Redirect files
 

@@ -1,10 +1,7 @@
-# AI routing directive
+# AI routing directive (Gemini CLI, older setups)
 
-CRITICAL: All system instructions, style guides, and coding rules for this repository are located in AGENTS.md in the root directory.
+All rules for this repository live in AGENTS.md. The import below loads it mechanically at session start. Do not add project rules to this file.
 
-Instruction for the Gemini agent (Gemini CLI / Antigravity):
-- Read AGENTS.md now.
-- Follow all guidelines, architectural constraints and rules defined inside it.
-- Read BUILD_LOG.md before making changes, to understand prior decisions.
+@./AGENTS.md
 
-Note: recent versions of Antigravity read AGENTS.md natively. This file is a safety-net redirect in case that is not the case for your setup.
+Note: recent Google tooling (Antigravity, and Gemini CLI with `context.fileName` configured) reads AGENTS.md natively. This file is a safety net for setups that still default to GEMINI.md only. If both are read, the content is identical either way, since this file contains nothing but the import.

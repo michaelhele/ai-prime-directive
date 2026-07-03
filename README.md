@@ -4,28 +4,28 @@ A centralised routing system for AI coding agents, so project rules are written 
 
 ## Core architecture
 
-* **AGENTS.md** — the single source of truth for all AI instructions and repository rules. This is the open, cross-tool standard originally published by OpenAI and now stewarded by the Agentic AI Foundation. It is read natively by Cursor, Codex, Gemini CLI, GitHub Copilot, Google Jules, Windsurf, Roo Code and others.
-* **BUILD_LOG.md** — a plain-English chronological diary of design decisions, file creations and project milestones. Prevents "cold start" when a new agent or human joins the project.
-* **_skills/** — a storage location for modular workflows and specialised agent prompts.
+* **AGENTS.md**: the single source of truth for all AI instructions and repository rules. This is the open, cross-tool standard originally published by OpenAI and now stewarded by the Agentic AI Foundation. It is read natively by Cursor, Codex, GitHub Copilot, Google Jules, Windsurf, Roo Code and others.
+* **BUILD_LOG.md**: a plain-English chronological diary of design decisions, file creations and project milestones. Prevents a "cold start" when a new agent or human joins the project.
+* **.agents/skills/**: a shared folder for reusable agent skills and workflows, using the `.agents/skills/` convention that Antigravity and Gemini CLI both read.
 
 ## Redirect files
 
-A small number of tools do not yet read AGENTS.md natively and require a thin pointer file instead:
+Some tools do not read AGENTS.md by default and need a thin pointer file instead:
 
-* **CLAUDE.md** — for Claude Code.
-* **GEMINI.md** — safety-net redirect for Gemini-based tools, in case AGENTS.md is not picked up automatically.
+* **CLAUDE.md**: for Claude Code, which reads CLAUDE.md rather than AGENTS.md.
+* **GEMINI.md**: for Gemini CLI, which reads GEMINI.md by default and only reads AGENTS.md once you set `context.fileName` in `settings.json`. The pointer means it works with no configuration.
 
 Do not duplicate content into these files. They exist only to redirect an agent back to AGENTS.md.
 
 ## How it works
 
-**1. `AGENTS.md` as the single source of truth**
+**1. AGENTS.md as the single source of truth**
 Define project rules, conventions and context once, in the format most agents already read natively.
 
-**2. Pointer files for holdouts**
-For tools that don't yet read `AGENTS.md` (Claude Code among them), add a short file in that tool's expected location that redirects it back to the master file, rather than letting a second, conflicting set of instructions build up.
+**2. Pointer files for the rest**
+For tools that don't read AGENTS.md out of the box (Claude Code, and Gemini CLI unless configured), add a short file in that tool's expected location that redirects it back to the master file, rather than letting a second, conflicting set of instructions build up.
 
-**3. `BUILD_LOG.md` for continuity**
+**3. BUILD_LOG.md for continuity**
 A plain-text log of design decisions, pivots and milestones, updated as the project moves. Any newly introduced agent, or human collaborator, can read it and continue work without re-litigating earlier choices.
 
 ## Background

@@ -1,4 +1,4 @@
-# Prime Directive Framework
+# AI Prime Directive Framework
 
 A centralised routing system for AI coding agents, so project rules are written once and read by every tool.
 
@@ -6,7 +6,7 @@ A centralised routing system for AI coding agents, so project rules are written 
 
 * **AGENTS.md** — the single source of truth for all AI instructions and repository rules. This is the open, cross-tool standard originally published by OpenAI and now stewarded by the Agentic AI Foundation. It is read natively by Cursor, Codex, Gemini CLI, GitHub Copilot, Google Jules, Windsurf, Roo Code and others.
 * **BUILD_LOG.md** — a plain-English chronological diary of design decisions, file creations and project milestones. Prevents "cold start" when a new agent or human joins the project.
-* **.agents/skills/** — a storage location for modular workflows and specialised agent prompts. .agents/skills/ holds reusable agent skills shared across tools.
+* **_skills/** — a storage location for modular workflows and specialised agent prompts.
 
 ## Redirect files
 
@@ -17,25 +17,31 @@ A small number of tools do not yet read AGENTS.md natively and require a thin po
 
 Do not duplicate content into these files. They exist only to redirect an agent back to AGENTS.md.
 
-## Maintenance rules for humans
+## How it works
 
-1. Never update the redirect files with project content. If you need to change coding conventions, add dependencies, or modify documentation requirements, make the change exclusively in AGENTS.md.
-2. Keep filenames exact. Changing capitalisation can cause an agent to miss the file entirely.
-3. Log significant changes in BUILD_LOG.md so both human contributors and AI agents can follow the project's history.
+**1. `AGENTS.md` as the single source of truth**
+Define project rules, conventions and context once, in the format most agents already read natively.
 
-## How to initialise a new project via chat
+**2. Pointer files for holdouts**
+For tools that don't yet read `AGENTS.md` (Claude Code among them), add a short file in that tool's expected location that redirects it back to the master file, rather than letting a second, conflicting set of instructions build up.
 
-If you are using a command-line agent, you can configure the whole repository through natural language without opening a text editor. Send this to your active AI agent:
+**3. `BUILD_LOG.md` for continuity**
+A plain-text log of design decisions, pivots and milestones, updated as the project moves. Any newly introduced agent, or human collaborator, can read it and continue work without re-litigating earlier choices.
 
-> "Update AGENTS.md with the new project scope [insert your tech stack, goals and rules], and document this initialisation step in BUILD_LOG.md."
+## Background
 
-The agent will populate the master rule file and create the first entry in the build log.
+Michael Hele's background spans manufacturing, web design and marketing. He draws a direct comparison between the two: standardised components lowered cost and improved consistency in manufacturing, in much the same way global stylesheets replaced page-by-page styling in web design. This framework applies the same logic to AI coding agents, one set of rules, defined once, read consistently by every tool.
 
-## Adding support for a new tool
+More on his background: [michaelhele.com](https://michaelhele.com/)
 
-If a new AI coding tool launches that requires its own proprietary filename, add one more thin redirect file pointing back to AGENTS.md. The core instructions in AGENTS.md never need to change.
+## Further reading
 
----
-Prime Directive Framework created by Michael Hele
-🌐 michaelhele.com
-Licensed under the MIT License.
+The full case for the framework, including the reasoning behind standardising on `AGENTS.md`: [AI Prime Directive: The Logical Fix](https://www.businessgrowthready.com/ai-prime-directive-logical-fix/)
+
+## Contact
+
+Built and maintained by Michael Hele at [AMD Creative Marketing](https://amdcreativemarketing.com/).
+
+## Licence
+
+MIT. See [`LICENSE`](./LICENSE) for details.
